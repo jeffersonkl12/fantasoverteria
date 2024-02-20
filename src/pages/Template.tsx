@@ -9,6 +9,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
@@ -17,6 +18,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { useState } from "react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { TfiMenu } from "react-icons/tfi";
 
 interface HeaderNavItemProp {
   info?: string;
@@ -43,20 +45,25 @@ const Header = () => {
     <>
       <header>
         <Box
-          paddingX={{ base: "10px", sm: "2rem" }}
+          paddingX={{ base: "1rem", sm: "2rem" }}
           backgroundColor={"amarelo.100"}
-          minH={"10rem"}
+          minH={"5rem"}
         >
           <Flex
             justify={"space-between"}
             align={"center"}
             w={"100%"}
-            h={"10rem"}
+            h={{ base: "6.5rem", sm: "10rem" }}
           >
-            <Box minW={"14rem"} bgColor={"red"}>
-              <Heading fontSize={25} color={"chocolate.100"}>
-                Fantasoverteria
-              </Heading>
+            <Box minW={"14rem"}>
+              <Box>
+                <Heading
+                  fontSize={{ base: "26px", sm: "2rem" }}
+                  fontFamily={"Oregano, cursive"}
+                >
+                  Fantasoverteria
+                </Heading>
+              </Box>
             </Box>
             <HStack
               spacing={0}
@@ -113,7 +120,7 @@ const Header = () => {
               </Box>
 
               <Box>
-                <HStack spacing={"1.5rem"} paddingX={"2rem"}>
+                <HStack spacing={"1.5rem"} paddingX={{ base: 0, md: "2rem" }}>
                   <Link to="#">
                     <MdEmail size={"1.5rem"} />
                   </Link>
@@ -123,6 +130,9 @@ const Header = () => {
                   <Link to="#">
                     <FaMagnifyingGlass size={"1.5rem"} />
                   </Link>
+                  <Box display={{base: "block", lgx: "none"}} boxSize={"1.5rem"}>
+                    <TfiMenu size="100%" />
+                  </Box>
                 </HStack>
               </Box>
               <Box display={{ base: "none", md: "block" }}>
