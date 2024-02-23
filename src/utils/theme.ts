@@ -10,6 +10,27 @@ const breakpoints = {
   "2xl": "96em",
 };
 
+const Heading = defineStyleConfig({
+  variants: {
+    titulo: {
+      color: "#361a0c",
+      fontSize: ["25px","28px","28px"]
+
+    },
+  },
+});
+
+const Text = defineStyleConfig({
+  baseStyle: {
+    fontSize: "16px",
+  },
+  variants: {
+    texto: {
+      color: "#361a0c",
+    }
+  }
+});
+
 const Button = defineStyleConfig({
   variants: {
     primaryIcon: {
@@ -22,7 +43,8 @@ const Button = defineStyleConfig({
   },
 });
 
-const theme = extendTheme({breakpoints,
+const theme = extendTheme({
+  breakpoints,
   colors: {
     amarelo: {
       100: "#f7d10e",
@@ -33,9 +55,19 @@ const theme = extendTheme({breakpoints,
     rosa: {
       100: "#e86082",
     },
+    cinza: {
+      100: "#54595f",
+      50: "#8d8d8d",
+    },
+  },
+  fonts: {
+    body: "Roboto, sans-serif",
+    Heading: "Roboto, sans-serif",
   },
   components: {
     Button,
+    Text,
+    Heading
   },
 });
 
