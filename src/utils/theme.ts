@@ -10,12 +10,32 @@ const breakpoints = {
   "2xl": "96em",
 };
 
+export const colors = {
+  amarelo: {
+    100: "#f7d10e",
+  },
+  chocolate: {
+    100: "#361a0c",
+  },
+  rosa: {
+    100: "#e86082",
+  },
+  cinza: {
+    100: "#54595f",
+    50: "#8d8d8d",
+    25: "#bababa",
+  },
+  branco: {
+    100: "#f6f6f6",
+    50: "#F2F2F2",
+  },
+};
+
 const Heading = defineStyleConfig({
   variants: {
     titulo: {
       color: "#361a0c",
-      fontSize: ["25px","28px","28px"]
-
+      fontSize: ["25px", "28px", "28px"],
     },
   },
 });
@@ -27,8 +47,8 @@ const Text = defineStyleConfig({
   variants: {
     texto: {
       color: "#361a0c",
-    }
-  }
+    },
+  },
 });
 
 const Button = defineStyleConfig({
@@ -45,21 +65,7 @@ const Button = defineStyleConfig({
 
 const theme = extendTheme({
   breakpoints,
-  colors: {
-    amarelo: {
-      100: "#f7d10e",
-    },
-    chocolate: {
-      100: "#361a0c",
-    },
-    rosa: {
-      100: "#e86082",
-    },
-    cinza: {
-      100: "#54595f",
-      50: "#8d8d8d",
-    },
-  },
+  colors,
   fonts: {
     body: "Roboto, sans-serif",
     Heading: "Roboto, sans-serif",
@@ -67,7 +73,7 @@ const theme = extendTheme({
   components: {
     Button,
     Text,
-    Heading
+    Heading,
   },
 });
 

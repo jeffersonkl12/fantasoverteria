@@ -17,11 +17,15 @@ import {
   AccordionItem,
   AccordionIcon,
   VStack,
-  Center,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { MdEmail } from "react-icons/md";
-import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+import { MdEmail, MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import {
+  FaWhatsapp,
+  FaPhoneAlt,
+  FaInstagram,
+  FaPinterest,
+} from "react-icons/fa";
 import { FaMagnifyingGlass, FaLocationDot } from "react-icons/fa6";
 import { BiSolidRightArrow } from "react-icons/bi";
 import React, { useEffect, useState } from "react";
@@ -31,6 +35,10 @@ import { IoMdClose } from "react-icons/io";
 import InputCustom from "../components/utils/InputCustom";
 import BoxExpansionAnimation from "../components/BoxExpansionAnimation";
 import UnderlineBox from "../components/utils/UnderlineBox";
+import InputPrimary from "../components/utils/InputPrimary";
+import TextAreaCustom from "../components/utils/TextAreaCustom";
+import ButtonCustom from "../components/utils/ButtonCustom";
+import { colors } from "../utils/theme";
 
 interface ContenteContatFooterProp {
   titulo?: string;
@@ -84,48 +92,99 @@ const Footer = () => {
   return (
     <>
       <footer>
-        <Box padding={"1rem"}>
+        <Box padding={"1rem"} bgColor={"branco.50"}>
           <Flex
             justify={"center"}
-            align={"center"}
-            direction={{ base: "column" }}
+            align={{ base: "center", md: "flex-start" }}
+            direction={{ base: "column", md: "row" }}
           >
-            <Center>
-              <VStack spacing={25}>
-                <ContenteContatFooter titulo="Fantasoverteria">
-                  <Text
-                    variant={"texto"}
-                    noOfLines={4}
-                    maxW={"390px"}
-                    textAlign={"center"}
-                  >
-                    Com uma qualidade e sabor inigualável fomos capazes de
-                    crescer e nos tornar uma grande marca e espalhar nossa
-                    ‘’saborosidade’’ por todo o estado do ceará.
-                  </Text>
-                </ContenteContatFooter>
-                <ContenteContatFooter titulo="Fale Conosco">
-                  <IconTextFooter
-                    style={{ alignItems: "flex-start" }}
-                    icon={<FaLocationDot />}
-                  >
-                    R. Prof. Osvaldo Franco, 55 - Centro, Betim - MG, 32510-050
-                  </IconTextFooter>
-                  <IconTextFooter icon={<FaPhoneAlt />}>
-                    (XX) XXXX-XXX1
-                  </IconTextFooter>
-                  <IconTextFooter icon={<FaPhoneAlt />}>
-                    (XX) XXXX-XXX2
-                  </IconTextFooter>
-                  <IconTextFooter icon={<FaWhatsapp />}>
-                    (XX) XXXX-XXX3
-                  </IconTextFooter>
-                  <IconTextFooter icon={<FaWhatsapp />}>
-                    (XX) XXXX-XXX4
-                  </IconTextFooter>
-                </ContenteContatFooter>
-              </VStack>
-            </Center>
+            <VStack spacing={25} marginRight={{ base: 0, md: "50px" }}>
+              <ContenteContatFooter titulo="Fantasoverteria">
+                <Text
+                  variant={"texto"}
+                  noOfLines={4}
+                  maxW={"390px"}
+                  textAlign={"center"}
+                >
+                  Com uma qualidade e sabor inigualável fomos capazes de crescer
+                  e nos tornar uma grande marca e espalhar nossa
+                  ‘’saborosidade’’ por todo o estado do ceará.
+                </Text>
+              </ContenteContatFooter>
+              <ContenteContatFooter titulo="Fale Conosco">
+                <IconTextFooter
+                  style={{ alignItems: "flex-start" }}
+                  icon={<FaLocationDot />}
+                >
+                  R. Prof. Osvaldo Franco, 55 - Centro, Betim - MG, 32510-050
+                </IconTextFooter>
+                <IconTextFooter icon={<FaPhoneAlt />}>
+                  (XX) XXXX-XXX1
+                </IconTextFooter>
+                <IconTextFooter icon={<FaPhoneAlt />}>
+                  (XX) XXXX-XXX2
+                </IconTextFooter>
+                <IconTextFooter icon={<FaWhatsapp />}>
+                  (XX) XXXX-XXX3
+                </IconTextFooter>
+                <IconTextFooter icon={<FaWhatsapp />}>
+                  (XX) XXXX-XXX4
+                </IconTextFooter>
+              </ContenteContatFooter>
+            </VStack>
+
+            <Box marginTop={{ base: "5rem", md: "0px" }}>
+              <form>
+                <VStack spacing={2}>
+                  <InputPrimary holder="Nome" isRequerid />
+                  <InputPrimary holder="E-mail" type={"email"} isRequerid />
+                  <InputPrimary holder="Telefone" type="tel" isRequerid />
+                  <TextAreaCustom
+                    holder="Menssagem"
+                    style={{ minHeight: "110px" }}
+                    isRequerid
+                  />
+                  <ButtonCustom
+                    text="Enviar mensagem"
+                    rightIcon={
+                      <MdOutlineKeyboardDoubleArrowRight
+                        size={25}
+                        color={colors.chocolate[100]}
+                      />
+                    }
+                  />
+                </VStack>
+              </form>
+            </Box>
+          </Flex>
+        </Box>
+        <Box bgColor={"amarelo.100"} paddingY={15}>
+          <Flex
+            justify={{ base: "center" }}
+            align={"center"}
+            direction={{ base: "column", md: "row" }}
+            marginX={10}
+          >
+            <HStack justifySelf={"flex-start"} flex={1} >
+              <IconMobileHeader
+                icon={<FaWhatsapp />}
+                style={{ backgroundColor: "white" }}
+              />
+              <IconMobileHeader
+                icon={<FaInstagram />}
+                style={{ backgroundColor: "white" }}
+              />
+              <IconMobileHeader
+                icon={<FaPinterest />}
+                style={{ backgroundColor: "white" }}
+              />
+            </HStack>
+            <Box marginTop={{base: "1rem", md: "0px"}} flex={1}>
+              <Text textAlign={"center"}>Copyright &copy; 2024</Text>
+            </Box>
+            <Box flex={1}>
+
+            </Box>
           </Flex>
         </Box>
       </footer>
@@ -166,12 +225,18 @@ const SeacrhModalHeader = ({ onClickCloseIcon }: SeacrhModalHeaderProp) => {
 
 interface IconMobileHeaderProp {
   icon?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
-const IconMobileHeader = ({ icon }: IconMobileHeaderProp) => {
+const IconMobileHeader = ({ icon, style }: IconMobileHeaderProp) => {
   return (
     <>
-      <Box padding={1.5} borderRadius={"full"} bgColor={"rosa.100"}>
+      <Box
+        padding={1.5}
+        borderRadius={"full"}
+        bgColor={"rosa.100"}
+        style={style}
+      >
         {icon}
       </Box>
     </>
