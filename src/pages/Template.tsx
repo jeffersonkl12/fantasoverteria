@@ -18,7 +18,7 @@ import {
   AccordionIcon,
   VStack,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { MdEmail, MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import {
   FaWhatsapp,
@@ -653,6 +653,11 @@ const Template = () => {
     <>
       <div className="container-root">
         <Header />
+        <main>
+          <Box>
+            <Outlet/>
+          </Box>
+        </main>
         <Footer />
       </div>
     </>
