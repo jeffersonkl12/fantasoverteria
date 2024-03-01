@@ -6,7 +6,7 @@ interface Prop {
 }
 
 const animationKeyFrames = keyframes`
-    0% {opacity: .2;}
+    0% {opacity: .5;}
     100% {opacity: 1;}
 `;
 

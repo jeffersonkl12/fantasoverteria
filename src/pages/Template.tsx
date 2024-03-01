@@ -33,12 +33,12 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { TfiMenu } from "react-icons/tfi";
 import { IoMdClose } from "react-icons/io";
 import InputCustom from "../components/utils/InputCustom";
-import BoxExpansionAnimation from "../components/BoxExpansionAnimation";
 import UnderlineBox from "../components/utils/UnderlineBox";
 import InputPrimary from "../components/utils/InputPrimary";
 import TextAreaCustom from "../components/utils/TextAreaCustom";
 import ButtonCustom from "../components/utils/ButtonCustom";
 import { colors } from "../utils/theme";
+import BoxScaleAnimation from "@/components/utils/BoxScaleAnimation";
 
 interface ContenteContatFooterProp {
   titulo?: string;
@@ -165,7 +165,7 @@ const Footer = () => {
             direction={{ base: "column", md: "row" }}
             marginX={10}
           >
-            <HStack justifySelf={"flex-start"} flex={1} >
+            <HStack justifySelf={"flex-start"} flex={1}>
               <IconMobileHeader
                 icon={<FaWhatsapp />}
                 style={{ backgroundColor: "white" }}
@@ -179,12 +179,10 @@ const Footer = () => {
                 style={{ backgroundColor: "white" }}
               />
             </HStack>
-            <Box marginTop={{base: "1rem", md: "0px"}} flex={1}>
+            <Box marginTop={{ base: "1rem", md: "0px" }} flex={1}>
               <Text textAlign={"center"}>Copyright &copy; 2024</Text>
             </Box>
-            <Box flex={1}>
-
-            </Box>
+            <Box flex={1}></Box>
           </Flex>
         </Box>
       </footer>
@@ -615,11 +613,15 @@ const Header = () => {
                     <FaMagnifyingGlass size={"1.5rem"} />
                   </Box>
                   {isSearchOpen && (
-                    <BoxExpansionAnimation
-                      style={{ position: "fixed", zIndex: 1, left: 0, top: 0 }}
+                    <Box
+                      style={{ position: "fixed", zIndex: 11, left: 0, top: 0 }}
                     >
-                      <SeacrhModalHeader onClickCloseIcon={onClickSearchIcon} />
-                    </BoxExpansionAnimation>
+                      <BoxScaleAnimation scaleInitialValue={.2} scaleValue={1}>
+                        <SeacrhModalHeader
+                          onClickCloseIcon={onClickSearchIcon}
+                        />
+                      </BoxScaleAnimation>
+                    </Box>
                   )}
 
                   <Box
@@ -655,7 +657,7 @@ const Template = () => {
         <Header />
         <main>
           <Box>
-            <Outlet/>
+            <Outlet />
           </Box>
         </main>
         <Footer />

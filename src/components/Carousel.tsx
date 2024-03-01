@@ -4,14 +4,21 @@ import BoxFadeAnimation from "./BoxFadeAnimation";
 
 interface ArrowSlideProp {
   children?: React.ReactNode;
+  style?: React.CSSProperties;
   dir?: string;
   onClick?: () => void;
 }
 
-const ArrowSlide = ({ dir = "left", children, onClick }: ArrowSlideProp) => {
+const ArrowSlide = ({
+  dir = "left",
+  children,
+  style,
+  onClick,
+}: ArrowSlideProp) => {
   return (
     <>
       <Box
+        style={style}
         cursor={"pointer"}
         position={"absolute"}
         top={"50%"}
@@ -25,6 +32,7 @@ const ArrowSlide = ({ dir = "left", children, onClick }: ArrowSlideProp) => {
         userSelect={"none"}
         left={dir === "left" ? 0 : "auto"}
         right={dir === "right" ? 0 : "auto"}
+        zIndex={10}
         onClick={onClick}
       >
         {children}
@@ -51,9 +59,16 @@ const CarouselItem = ({ isDisplay = false, children }: CarouselItemProp) => {
 interface CarouselProp {
   children?: React.ReactNode;
   style?: React.CSSProperties;
+  styleArrow?: React.CSSProperties;
+  temp?: string;
 }
 
-const Carousel = ({ children, style }: CarouselProp) => {
+const Carousel = ({
+  children,
+  style,
+  styleArrow,
+  temp = "8s",
+}: CarouselProp) => {
   const tamanhoItems = React.Children.count(children);
   const [carouselItemDisplay, setCarouselItemDisplay] = useState(
     new Array(tamanhoItems).fill(false)
@@ -88,11 +103,13 @@ const Carousel = ({ children, style }: CarouselProp) => {
     novoIntervalo();
   };
 
+  const tempoMs = Number.parseInt(temp.split("s")[0]) * 1000;
+
   const novoIntervalo = () => {
     clearInterval(timeSlide.current);
     timeSlide.current = setInterval(
       () => onClickArrowSlide(index.current + 1),
-      8000
+      tempoMs
     );
   };
 
@@ -116,10 +133,14 @@ const Carousel = ({ children, style }: CarouselProp) => {
             );
           })}
 
-        <ArrowSlide onClick={() => onClickArrowSlide(index.current - 1)}>
+        <ArrowSlide
+          style={styleArrow}
+          onClick={() => onClickArrowSlide(index.current - 1)}
+        >
           &#10094;
         </ArrowSlide>
         <ArrowSlide
+          style={styleArrow}
           onClick={() => onClickArrowSlide(index.current + 1)}
           dir="right"
         >
