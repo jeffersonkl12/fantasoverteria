@@ -23,6 +23,8 @@ import People1 from "@assets/imgs/people-1.jpg";
 import People2 from "@assets/imgs/people-2.jpg";
 import People3 from "@assets/imgs/people-3.jpg";
 import People4 from "@assets/imgs/people-4.jpg";
+import CardProduto from "@/components/CardProduto";
+import Sorvete from "@assets/imgs/sorvete1.jpg";
 
 const Home = () => {
   return (
@@ -57,29 +59,40 @@ const Home = () => {
                   animation={scrollAnimationFade()}
                   w={"100%"}
                 >
-                  <Flex direction={{base: "column", md: "row"}} justify={"center"} align={"stretch"} w={"100%"}>
-                    <Box w={{base:"30vw", lg: "40vw"}}>
+                  <Flex
+                    direction={{ base: "column", lg: "row" }}
+                    justify={"center"}
+                    align={"stretch"}
+                    w={"100%"}
+                  >
+                    <Box w={{ base: "100%", lg: "40vw" }}>
                       <Image
                         src={SorveteBola1}
                         boxSize={"100%"}
                         objectFit={"cover"}
                         objectPosition={"center"}
-                        borderLeftRadius={20}
+                        borderRadius={{ base: 20, lg: "20px 0 0 20px" }}
                       />
                     </Box>
                     <Box
-                      paddingX={"5rem"}
+                      paddingX={{ base: "2rem", lg: "5rem" }}
                       paddingTop={"3rem"}
                       paddingBottom={"4rem"}
                       bgColor={"white"}
                       borderRightRadius={20}
                       flex={1}
                     >
-                      <VStack align={"flex-start"} spacing={"2rem"}>
-                        <Heading variant={"subtitulo"}>
+                      <VStack align={"stretch"} spacing={"2rem"}>
+                        <Heading
+                          textAlign={{ base: "center", lg: "start" }}
+                          variant={"subtitulo"}
+                        >
                           Sorvetes incrivelmente cremosos!
                         </Heading>
-                        <Heading variant={"titulo"}>
+                        <Heading
+                          textAlign={{ base: "center", lg: "start" }}
+                          variant={"titulo"}
+                        >
                           Qualidade e sabor incomparável!
                         </Heading>
                         <Text variant={"texto"}>
@@ -91,7 +104,7 @@ const Home = () => {
                         </Text>
                         <Flex
                           direction={{ base: "column", xl: "row" }}
-                          w={"max-content"}
+                          align={{ base: "center" }}
                         >
                           <Box marginRight={{ base: 0, xl: "1rem" }}>
                             <ButtonPrimary iconRight={<FaArrowRight />}>
@@ -113,19 +126,71 @@ const Home = () => {
                       </VStack>
                     </Box>
                   </Flex>
-                  <HStack
+                  <Flex
+                    direction={{ base: "column", lg: "row" }}
                     justify={"space-between"}
+                    align={{ base: "center", lg: "flex-start" }}
                     w={"100%"}
+                    minH={"max-content"}
                     paddingTop={"3rem"}
                   >
-                    <CardInfo src={People1} titulo="Qualidade incomparável!" />
-                    <CardInfo src={People2} titulo="Mega cremoso!" />
-                    <CardInfo src={People3} titulo="Mega cremoso!" />
-                    <CardInfo src={People4} titulo="Diversos sabores!" />
-                  </HStack>
+                    <Box
+                      w={{ base: "max-content", lg: "calc((100% / 4) - 20px)" }}
+                    >
+                      <CardInfo
+                        src={People1}
+                        titulo="Qualidade incomparável!"
+                      />
+                    </Box>
+                    <Box
+                      w={{ base: "max-content", lg: "calc((100% / 4) - 20px)" }}
+                      marginTop={{ base: "2rem", lg: 0 }}
+                    >
+                      <CardInfo src={People2} titulo="Mega cremoso!" />
+                    </Box>
+                    <Box
+                      w={{ base: "max-content", lg: "calc((100% / 4) - 20px)" }}
+                      marginTop={{ base: "2rem", lg: 0 }}
+                    >
+                      <CardInfo src={People3} titulo="Mega cremoso!" />
+                    </Box>
+                    <Box
+                      w={{ base: "max-content", lg: "calc((100% / 4) - 20px)" }}
+                      marginTop={{ base: "2rem", lg: 0 }}
+                    >
+                      <CardInfo src={People4} titulo="Diversos sabores!" />
+                    </Box>
+                  </Flex>
                 </Flex>
               </Box>
             </Center>
+          </SectionContainer>
+          <SectionContainer>
+            <VStack>
+              <VStack spacing={"0.5rem"}>
+                <Heading variant={"titulo"} textAlign={"center"}>
+                  Sorvetes, picolés e muito mais!
+                </Heading>
+                <Box
+                  paddingX={{ base: 0, md: "9rem" }}
+                  w={{ base: "100%", lg: "80%" }}
+                >
+                  <Text variant={"texto"} textAlign={"center"}>
+                    Temos diversos sabores e tamanhos de sorvetes, casquinhas,
+                    picolés e açaí. É sorvete para todo tipo de gosto! Conheça
+                    nossa linha de produtos!
+                  </Text>
+                </Box>
+              </VStack>
+              <Flex>
+                <CardProduto
+                  src={Sorvete}
+                  titulo="Sorvete de Morango"
+                  info="Prove o clássico e delicioso sorvete de morango, com frutas selecionadas, com sabor natural da fruta, para uma colherada de puro prazer."
+                  preco={"30,00"}
+                />
+              </Flex>
+            </VStack>
           </SectionContainer>
         </Box>
       </Box>

@@ -7,6 +7,7 @@ interface ButtonPrimaryProp {
   style?: React.CSSProperties;
   secondary?: boolean;
   isBorder?: boolean;
+  tamanho?: string | number;
 }
 
 const ButtonPrimary = ({
@@ -15,6 +16,7 @@ const ButtonPrimary = ({
   children,
   iconLeft,
   iconRight,
+  tamanho = "14rem",
   style,
 }: ButtonPrimaryProp) => {
   return (
@@ -26,11 +28,11 @@ const ButtonPrimary = ({
         bgColor={secondary ? "white":"rosa.100"}
         color={"chocolate.100"}
         fontWeight={"normal"}
-        border={secondary && isBorder ? "1px solid black": "none"}
-        borderColor={secondary && isBorder  ? "chocolate.100": ""}
+        border={isBorder ? "1px solid transparent": "none"}
+        borderColor={secondary && isBorder  ? "chocolate.100": "rosa.100"}
         borderRadius={24}
         h={'3rem'}
-        w={'14rem'}
+        w={tamanho}
         minW={'max-content'}
         minH={'max-content'}
         cursor={'pointer'}

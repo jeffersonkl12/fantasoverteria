@@ -9,7 +9,7 @@ interface Prop {
 const CardInfo = ({ src, titulo, style }: Prop) => {
   return (
     <>
-      <Box maxW={"16rem"} borderRadius={20} bgColor={"white"} style={style}>
+      <Box maxW={"16rem"} borderRadius={20} bgColor={"white"} style={style} >
         <VStack>
           <Box>
             <Image src={src} borderTopRadius={20} />

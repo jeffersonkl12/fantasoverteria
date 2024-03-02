@@ -23,6 +23,7 @@ export const colors = {
   cinza: {
     100: "#54595f",
     50: "#8d8d8d",
+    40: "#3f3f3f",
     25: "#bababa",
   },
   branco: {
@@ -35,18 +36,18 @@ const Heading = defineStyleConfig({
   variants: {
     titulo: {
       color: "#361a0c",
-      fontSize: ["25px", "28px", "39px"],
+      fontSize: ["27px", "30px", "39px"],
     },
     subtitulo: {
       color: "#361a0c",
-      fontSize: ["16px", "16px", "20px"]
+      fontSize: ["17px", "18px", "20px"]
     }
   },
 });
 
 const Text = defineStyleConfig({
   baseStyle: {
-    fontSize: "16px",
+    fontSize: ["17px","16px"],
   },
   variants: {
     texto: {

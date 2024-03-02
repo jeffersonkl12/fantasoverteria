@@ -1,8 +1,7 @@
-import ImageBoxItem from "@/components/ImageBoxItem";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import ButtonPrimary from "@/components/utils/ButtonPrimary";
-import { Box, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text, VStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import scaleAnimation from "@/animations/scaleAnimation";
 
@@ -16,14 +15,14 @@ interface CarouselItem {
 const CarouselItem = ({ src, titulo, label, info }: CarouselItem) => {
   return (
     <>
-      <Box position={"relative"} >
+      <Box position={"relative"}>
         <Flex
           position={"absolute"}
           boxSize={"100%"}
           justify={"center"}
           align={"center"}
           zIndex={1}
-          padding={'1rem'}
+          padding={"1rem"}
         >
           <VStack spacing={"1.2rem"} maxW={"43rem"} minW={"21rem"}>
             <Text
@@ -79,7 +78,9 @@ const CarouselItem = ({ src, titulo, label, info }: CarouselItem) => {
             </Flex>
           </VStack>
         </Flex>
-        <ImageBoxItem src={src} />
+        <Box h={"80vh"}>
+          <Image src={src} boxSize={"100%"} objectFit={"cover"} />
+        </Box>
         <Box
           position={"absolute"}
           left={0}
