@@ -2,8 +2,9 @@ import ImageBoxItem from "@/components/ImageBoxItem";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import ButtonPrimary from "@/components/utils/ButtonPrimary";
-import { Box, Flex, HStack, Heading, Text, VStack } from "@chakra-ui/react";
-import BoxScaleAnimation from "@/components/utils/BoxScaleAnimation";
+import { Box, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import scaleAnimation from "@/animations/scaleAnimation";
 
 interface CarouselItem {
   src?: string;
@@ -15,49 +16,67 @@ interface CarouselItem {
 const CarouselItem = ({ src, titulo, label, info }: CarouselItem) => {
   return (
     <>
-      <Box position={"relative"}>
+      <Box position={"relative"} >
         <Flex
           position={"absolute"}
           boxSize={"100%"}
           justify={"center"}
           align={"center"}
           zIndex={1}
+          padding={'1rem'}
         >
-          <VStack spacing={"1.2rem"}>
+          <VStack spacing={"1.2rem"} maxW={"43rem"} minW={"21rem"}>
             <Text
               textAlign={"center"}
-              fontSize={"1.2rem"}
+              fontSize={{ base: "1rem", md: "1.2rem" }}
               fontWeight={"bold"}
               color={"white"}
             >
               {label}
             </Text>
-            <Heading textAlign={"center"} fontSize={"2.5rem"} color={"white"}>
+            <Heading
+              textAlign={"center"}
+              fontSize={{ base: "2rem", md: "2.5rem" }}
+              color={"white"}
+              variant={"titulo"}
+            >
               {titulo}
             </Heading>
             <Text
               textAlign={"center"}
-              fontSize={"1.4rem"}
+              fontSize={{ base: "1rem", md: "1.4rem" }}
               color={"white"}
-              maxW={"43rem"}
             >
               {info}
             </Text>
-            <HStack>
-              <BoxScaleAnimation scaleValue={.8}>
-                <ButtonPrimary iconRight={<FaArrowAltCircleRight />}>
+            <Flex direction={{ base: "column", md: "row" }} align={"center"}>
+              <Box
+                marginRight={{ base: 0, md: "1rem" }}
+                as={motion.div}
+                _hover={{ animation: scaleAnimation({ scaleValue: 0.8 }) }}
+              >
+                <ButtonPrimary
+                  iconRight={<FaArrowAltCircleRight size={"1.2rem"} />}
+                >
                   Faça seu pedido!
                 </ButtonPrimary>
-              </BoxScaleAnimation>
-              <BoxScaleAnimation scaleValue={1.2}>
+              </Box>
+
+              <Box
+                marginTop={{ base: "1rem", md: 0 }}
+                marginLeft={{ base: 0, md: "1rem" }}
+                as={motion.div}
+                _hover={{ animation: scaleAnimation({ scaleValue: 1.2 }) }}
+              >
                 <ButtonPrimary
-                  iconRight={<IoIosArrowDroprightCircle />}
+                  iconRight={<IoIosArrowDroprightCircle size={"1.4rem"} />}
                   secondary
+                  isBorder={false}
                 >
                   Nossos produtos
                 </ButtonPrimary>
-              </BoxScaleAnimation>
-            </HStack>
+              </Box>
+            </Flex>
           </VStack>
         </Flex>
         <ImageBoxItem src={src} />
@@ -70,26 +89,6 @@ const CarouselItem = ({ src, titulo, label, info }: CarouselItem) => {
             "linear-gradient(180deg, rgba(0,0,0,0.13769257703081228) 42%, rgba(0,0,0,0.7399334733893557) 85%);"
           }
         />
-        <Box
-          position={"absolute"}
-          bottom={0}
-          left={0}
-          w={"100%"}
-          h={"30vh"}
-          zIndex={1}
-        >
-          <svg
-            style={{ width: "100%", height: "auto" }}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-          >
-            <path
-              fill="#ffffff"
-              fillOpacity="1"
-              d="M0,160L60,170.7C120,181,240,203,360,186.7C480,171,600,117,720,106.7C840,96,960,128,1080,144C1200,160,1320,160,1380,160L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-            ></path>
-          </svg>
-        </Box>
       </Box>
     </>
   );

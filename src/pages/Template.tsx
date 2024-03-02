@@ -442,7 +442,7 @@ const MenuMobileHeader = ({
         padding={{ base: "1rem", md: "2rem" }}
         bgColor={"white"}
         hidden={hidden}
-        zIndex={1}
+        zIndex={10}
       >
         <Box marginLeft={{ md: "10rem" }}>
           <Flex justify={"space-between"} align={"center"}>

@@ -1,6 +1,7 @@
+import fadeAnimation from "@/animations/fadeAnimation";
 import { Box } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import BoxFadeAnimation from "./BoxFadeAnimation";
 
 interface ArrowSlideProp {
   children?: React.ReactNode;
@@ -32,7 +33,7 @@ const ArrowSlide = ({
         userSelect={"none"}
         left={dir === "left" ? 0 : "auto"}
         right={dir === "right" ? 0 : "auto"}
-        zIndex={10}
+        zIndex={1}
         onClick={onClick}
       >
         {children}
@@ -50,7 +51,7 @@ const CarouselItem = ({ isDisplay = false, children }: CarouselItemProp) => {
   return (
     <>
       <Box display={isDisplay ? "block" : "none"}>
-        <BoxFadeAnimation>{children}</BoxFadeAnimation>
+        <Box as={motion.div} animation={fadeAnimation({scaleValue: 1})}>{children}</Box>
       </Box>
     </>
   );

@@ -35,8 +35,12 @@ const Heading = defineStyleConfig({
   variants: {
     titulo: {
       color: "#361a0c",
-      fontSize: ["25px", "28px", "28px"],
+      fontSize: ["25px", "28px", "39px"],
     },
+    subtitulo: {
+      color: "#361a0c",
+      fontSize: ["16px", "16px", "20px"]
+    }
   },
 });
 
@@ -63,6 +67,17 @@ const Button = defineStyleConfig({
   },
 });
 
+const SectionContainer = defineStyleConfig({
+  baseStyle: {
+    padding: "6rem 1rem",
+  },
+  variants: {
+    secondary: {
+      bgColor: "#f2f2f2"
+    }
+  }
+});
+
 const theme = extendTheme({
   breakpoints,
   colors,
@@ -74,6 +89,7 @@ const theme = extendTheme({
     Button,
     Text,
     Heading,
+    SectionContainer,
   },
 });
 

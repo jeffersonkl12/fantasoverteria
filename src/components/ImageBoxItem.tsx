@@ -8,8 +8,8 @@ interface ImageBoxItem {
 const ImageBoxItem = ({ src, style }: ImageBoxItem) => {
   return (
     <>
-      <Box style={style} h={"80vh"} objectFit={"fill"}>
-        <Image src={src} />
+      <Box style={style} h={"80vh"} >
+        <Image src={src} boxSize={"100%"} objectFit={"cover"}/>
       </Box>
     </>
   );
